@@ -39,30 +39,6 @@ namespace SocialNetWorkv1._0.Controllers
                     ListInfoFriend.Add(userInfo.First(x=>x.ID==item.IdFriend)); //добавляем в список                      
                 }
                 
-                //int?[] tmp = new int?[userListFriend.Count()]; // создаем массив индексов друзей
-
-                //int count = 0;// счетчик для движения по массиву
-                //foreach (var item in userListFriend)
-                //{
-                //    tmp[count] = item.IdFriend;//записываем в массив цифр
-                //    count++;
-                //}
-
-                //List<UserInfo> ListInfoFriend = new List<UserInfo>(); // новый список для передачи во вью
-
-                //var userInfo = db.UserInfo; // получаем всех пользователей из базы
-
-                //foreach (var item in userInfo) // передераем всех пользовталей
-                //{
-                //    for (int i = 0; i < tmp.Length; i++)
-                //    {
-                //        if (item.ID == tmp[i]) // если совпадает по ID
-                //        {
-                //            ListInfoFriend.Add(item); //добавляем список 
-                //        }
-                //    }
-                //}
-
                 ViewBag.ReqFrnd = RequestFriend(userID); // передаем во вью спиоск запросов на дружбу
                 ViewBag.MyReqFrnd = MyRequestFriend(userID); // передаем во вью запросов пользоваптелдя на дружбу
                 return View(ListInfoFriend);// возращаем список
