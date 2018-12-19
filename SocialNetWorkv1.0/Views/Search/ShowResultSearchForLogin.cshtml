@@ -1,0 +1,64 @@
+﻿@model IEnumerable<SocialNetWorkv1._0.Models.UserInfo>
+
+@if (Model == null)
+{
+    <h5>Нет резльтатов поиска</h5>
+}
+else
+{
+    <h2>Все пользователи по разпросу</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                <p>Фото пользователя</p>
+            </th>
+            <th>
+                <p>Имя</p>
+            </th>
+            <th>
+                <p>Фамилия</p>
+            </th>
+            <th>
+                <p>Возраст</p>
+            </th>
+            <th>
+                <p>E-Mail</p>
+            </th>
+            <th>
+                <p>Адрес</p>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/image/@item.ImageUser" width="50" height="50" style="margin-left:100px; border:solid" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Firstname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lastname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adress)
+                </td>
+                <td>
+                    @Html.ActionLink("Посмотреть", "Details", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+}
+

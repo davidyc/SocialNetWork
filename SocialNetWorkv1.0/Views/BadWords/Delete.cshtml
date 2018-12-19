@@ -1,0 +1,31 @@
+﻿@model SocialNetWorkv1._0.Models.BadWord
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Удаление</h2>
+
+<h3>Уверены что хотите удалить слово?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <p class="control-label col-md-2"> Cлово </p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.word)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Да" class="btn btn-default" /> |
+            @Html.ActionLink("нет", "Index")
+        </div>
+    }
+</div>

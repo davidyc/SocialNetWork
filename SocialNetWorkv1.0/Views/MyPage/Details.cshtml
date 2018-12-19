@@ -1,0 +1,71 @@
+﻿@model SocialNetWorkv1._0.Models.UserInfo
+
+@{
+    ViewBag.Title = "Информация о пользователе";
+
+}
+
+
+<h2>Информация</h2>
+
+<div>
+    <h4>Пользователь @User.Identity.Name</h4>
+
+    <hr />
+
+    @if (Model.ImageUser == null)
+    {
+        Model.ImageUser = "no_photo.jpg";
+    }
+
+    <img src="~/image/@Model.ImageUser" width="200" height="200" style="margin-left:100px; border:solid" />
+
+
+    <dl class="dl-horizontal">       
+      
+        <dt>
+           Имя
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firstname)
+        </dd>
+
+        <dt>
+            Фамилия
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lastname)
+        </dd>
+
+        <dt>
+          Возраст
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt>
+           Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+          Адрес
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adress)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Изменить", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Выход на главную страницу", "Index", "Home")
+</p>

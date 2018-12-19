@@ -1,0 +1,54 @@
+﻿
+<dt>
+    Роль в системе
+</dt>
+<dd>
+    @if (ViewBag.ID == 1)
+            {
+        <p>Админ</p>
+    }
+    else if (ViewBag.ID == 2)
+    {
+        <p>Пользователь</p>
+    }
+    else
+    {
+        <p>Забанен</p>
+    }
+</dd>
+
+
+<dd>
+    @if (ViewBag.ID == 1)
+            {
+                using (Html.BeginForm("DownRoles", "Admin"))
+                {
+            <input type="hidden" name="id" value="@Model.ID" />
+                        <input type="submit" name="" value="Забрать адинку" />
+        }
+    }
+    else if (ViewBag.ID == 2)
+    {
+        //using (Html.BeginForm("UpRoles", "Admin"))
+        //{
+        using (Ajax.BeginForm("ShowResultSearch", new { }, new AjaxOptions { UpdateTargetId = "Results" }))
+        {
+            <input type="hidden" name="id" value="@Model.ID" />
+                        <input type="submit" name="" value="Выдать права админа" />
+        }
+        using (Html.BeginForm("DownRoles", "Admin"))
+        {
+            <input type="hidden" name="id" value="@Model.ID" />
+                        <input type="submit" value="Забанить" />
+        }
+    }
+    else
+    {
+        using (Html.BeginForm("UpRoles", "Admin"))
+        {
+            <input type="hidden" name="id" value="@Model.ID" />
+                        <input type="submit" name="" value="Разбанить" />
+        }
+    }
+</dd>
+

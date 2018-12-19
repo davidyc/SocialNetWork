@@ -1,0 +1,38 @@
+﻿@model IEnumerable<SocialNetWorkv1._0.Models.Chat>
+
+
+<table class="table">
+    <tr>
+
+        <th>
+            Сообщение
+        </th>
+        <th>
+            Время
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @if (item.SenderFlag == true) //если тру
+            {
+                <td style="background-color:gray">
+                    @Html.DisplayFor(modelItem => item.Text)
+                </td>
+            }
+            else // если фалс или нул
+            {
+                <td style="background-color:green">
+                    @Html.DisplayFor(modelItem => item.Text)
+                </td>
+            }
+
+            <td>
+                <sup>@Html.DisplayFor(modelItem => item.SendTime)</sup>
+            </td>
+        </tr>
+    }
+</table>
+<textarea cols="800" rows="3" name="text"></textarea>

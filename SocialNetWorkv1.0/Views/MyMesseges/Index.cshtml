@@ -1,0 +1,46 @@
+﻿@model IEnumerable<SocialNetWorkv1._0.Models.HerderChat>
+
+@{
+    ViewBag.Title = "Переписки пользовтаелей";
+}
+
+<h2>Переписки</h2>
+
+<table class="table">
+    <tr>
+      
+        <th>
+           Собеседник
+        </th>
+        <th>
+          Последнее сообщение
+        </th> 
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Login)
+        </td>
+
+        @if(item.SenderFlag == true) //если тру
+        {
+          <td style="background-color:gray">
+             @Html.DisplayFor(modelItem => item.LastMassege)
+          </td>
+        }
+        else // если фалс или нул
+        {
+            <td style="background-color:green">
+                @Html.DisplayFor(modelItem => item.LastMassege)
+            </td>
+        }
+
+        <td>          
+            @Html.ActionLink("Открыть", "Details", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

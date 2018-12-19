@@ -1,0 +1,11 @@
+﻿@{
+    if (User.IsInRole("Ban"))
+    {
+        Layout = "~/Views/Shared/Layout_startPage.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+}

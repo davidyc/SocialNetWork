@@ -1,0 +1,56 @@
+﻿@model IEnumerable<SocialNetWorkv1._0.Models.UserInfo>
+
+@{
+    ViewBag.Title = "Список пользователей";
+}
+
+<h3>Поиск по логину</h3>
+
+@using (Ajax.BeginForm("ShowResultSearchForLogin", new { }, new AjaxOptions { UpdateTargetId = "Results"}))
+{
+    <div class="row">
+        <h5 class="col-lg-1">Логин</h5>
+        <input  class="col-lg-1" style="width:100%" cols="400" rows="3" name="login" />
+        <input  class="col-lg-1"  type="submit" value="Искать"/>
+    </div>
+}
+
+<hr style="border:solid" />
+<h3>Поиск по параметрам</h3>
+
+
+@using (Ajax.BeginForm("ShowResultSearch", new { }, new AjaxOptions { UpdateTargetId = "Results" }))
+{
+    <div class="row">
+        <h5 class="col-lg-1">Имя</h5>
+        <input class="col-lg-1" style="width:100%" cols="400" rows="3" name="name" />    
+        <h5 class="col-lg-1">Фамилия</h5>
+        <input class="col-lg-1" style="width:100%" cols="400" rows="3" name="lastname" />        
+    </div>   
+    <div class="row">
+        <h5 class="col-lg-1">Возраст от</h5>
+        <input  type="number" class="col-lg-1" style="width:100%" cols="400" rows="3" name="minage" />
+        <h5 class="col-lg-1">Возраст до</h5>
+        <input type="number" class="col-lg-1" style="width:100%" cols="400" rows="3" name="maxage" />
+    </div>
+    <div class="row">
+        <h5 class="col-lg-1">E-mail</h5>
+        <input type="email" class="col-lg-1" style="width:100%" cols="400" rows="3" name="email" />
+        <h5 class="col-lg-1">Адресс</h5>
+        <input class="col-lg-1" style="width:100%" cols="400" rows="3" name="adress" />
+    </div>  
+    <div class="row">
+        <input class="col-lg-offset-8" type="submit" value="Искать" />
+    </div>
+ }
+
+<hr style="border:solid" />
+
+<div id="Results">
+    @{Html.RenderPartial("ShowResultSearchForLogin", Model); }
+</div>
+    
+
+
+@Scripts.Render("~/scripts/jquery-1.10.2.js")
+@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.js")

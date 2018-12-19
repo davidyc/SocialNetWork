@@ -1,0 +1,117 @@
+﻿@model SocialNetWorkv1._0.Models.UserInfo
+
+@{
+    ViewBag.Title = "Найденые пользоватеи";
+}
+
+<h2>Информация</h2>
+
+<div>
+    <hr />
+
+    @if (Model.ImageUser == null)
+    {
+        Model.ImageUser = "no_photo.jpg";
+    }
+
+    <img src="~/image/@Model.ImageUser" width="200" height="200" style="margin-left:100px; border:solid" />
+
+    
+    <dl class="dl-horizontal">     
+        
+        <dt>
+           Имя
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firstname)
+        </dd>
+
+        <dt>
+            Фамилия
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lastname)
+        </dd>
+
+        <dt>
+           Возраст
+        </dt>
+
+        <dt></dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt>
+          Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            Адресс
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adress)
+        </dd>
+
+        <dd>
+        @if (ViewBag.Friend == false)
+        {
+            if (ViewBag.MyReqFrnd == true)
+            {
+                using (Html.BeginForm("CanselReqFriend", "MyFriend"))
+                {
+                    <input type="hidden" name="id" value="@Model.ID" />
+                    <input type="submit" name="" value="Отменить запрос в друзья" />
+                }
+            }
+            else if (ViewBag.ReqFrnd == true)
+            {
+                using (Html.BeginForm("AddFriend", "MyFriend"))
+                {
+                    <input type="hidden" name="id" value="@Model.ID" />
+                    <input type="submit" name="" value="Подтвердить запрос в друзья" />
+                }
+            }
+            else
+            {
+                using (Html.BeginForm("AddReqFriend", "MyFriend"))
+                {
+                    <input type="hidden" name="id" value="@Model.ID" />
+                    <input type="submit" name="" value="Добавить в друзья" />                    
+                }
+            }
+
+        }
+        else
+        {
+            using (Html.BeginForm("DeleteFriend", "MyFriend"))
+            {
+                    <input type="hidden" name="id" value="@Model.ID" />
+                    <input type="submit" name="" value="Удать из друзей" />
+            }
+
+            using (Html.BeginForm("Details", "MyMesseges"))
+            {
+                    <input type="hidden" name="id" value="@Model.ID" />
+                    <input type="submit" value="Написать" />
+                }
+            
+        }
+                 
+        </dd>      
+    </dl>
+</div>
+
+
+
+<p>
+    @Html.ActionLink("Выход на главную страницу", "Index", "Home")
+</p>
