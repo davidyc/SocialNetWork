@@ -183,14 +183,15 @@ namespace SocialNetWorkv1._0.Controllers
 
             string Name = User.Identity.Name + ext;// назвнеи файла фотмар можно переделать
 
-            string path = @"~/image/" + Name; // путь
+            string path = @"~\image\" + Name; // путь
+           // string path = @"D:\SocialNetWork\SocialNetWorkv1.0\SocialNetWorkv1.0\Image" + Name; // путь
             try
             {
                 uploaded.SaveAs(path); // записываем файл на сервер   
             }
             catch
             {
-              path = @"~/image/no_photo.jpg"; // путь с фото без авы
+                Name = @"no_photo.jpg"; // путь с фото без авы
             }           
 
             using (Soc_NetWorkCF db = new Soc_NetWorkCF()) // создаем подклюение к базе
