@@ -123,7 +123,7 @@ namespace SocialNetWorkv1._0.Controllers
 
             using (Soc_NetWorkEntitiesProc db = new Soc_NetWorkEntitiesProc()) // создаем подключение к бд
             {
-                db.SendMessage(userID, catcher, texttmp, DateTime.Now); // вызываем хранимую процеуру 
+               db.SendMessage(userID, catcher, texttmp, DateTime.Now); // вызываем хранимую процеуру 
             }
 
             List<Chat> tmpChat = ReturnChat(catcher); // получаем и переписку
